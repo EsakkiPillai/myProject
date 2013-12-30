@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/log4j-1.2.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-beanutils-1.8.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mockito-all-1.8.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-validator-1.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-0.90.4-cdh3u3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/opencsv-2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/geoip-api-1.2.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/uadetector-core-0.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hadoop-core-0.20.2-cdh3u1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hive-exec-0.7.0-cdh3u0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/uadetector-resources-2013.05.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jedis-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hive-serde-0.7.0-cdh3u0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/nrt_lookup.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dspace-geoip-1.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hamcrest-core-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/gson-2.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mrunit-0.9.0-incubating-hadoop1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ron_lookup.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/uadetector-core-0.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit-4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

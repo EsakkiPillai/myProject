@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_eureka" default="compile.module.eureka">
+  <dirname property="module.eureka.basedir" file="${ant.file.module_eureka}"/>
+  
+  <property name="module.jdk.home.eureka" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.eureka" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.eureka" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.eureka" value="${compiler.args}"/>
+  
+  <property name="eureka.output.dir" value="${module.eureka.basedir}/out/production/eureka"/>
+  <property name="eureka.testoutput.dir" value="${module.eureka.basedir}/out/test/eureka"/>
+  
+  <path id="eureka.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="eureka.module.production.classpath">
+    <path refid="${module.jdk.classpath.eureka}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="eureka.runtime.production.module.classpath">
+    <pathelement location="${eureka.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="eureka.module.classpath">
+    <path refid="${module.jdk.classpath.eureka}"/>
+    <pathelement location="${eureka.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="eureka.runtime.module.classpath">
+    <pathelement location="${eureka.testoutput.dir}"/>
+    <pathelement location="${eureka.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.eureka">
+    <patternset refid="ignored.files"/>
+    <exclude name="com/ask/nrelate/cassandra/**"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.eureka">
+    <patternset refid="excluded.from.module.eureka"/>
+  </patternset>
+  
+  <path id="eureka.module.sourcepath">
+    <dirset dir="${module.eureka.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  <path id="eureka.module.test.sourcepath">
+    <dirset dir="${module.eureka.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.eureka" depends="compile.module.eureka.production,compile.module.eureka.tests" description="Compile module eureka"/>
+  
+  <target name="compile.module.eureka.production" depends="register.custom.compilers" description="Compile module eureka; production classes">
+    <mkdir dir="${eureka.output.dir}"/>
+    <javac2 destdir="${eureka.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.eureka}/javac">
+      <compilerarg line="${compiler.args.eureka}"/>
+      <bootclasspath refid="eureka.module.bootclasspath"/>
+      <classpath refid="eureka.module.production.classpath"/>
+      <src refid="eureka.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.eureka"/>
+    </javac2>
+    
+    <copy todir="${eureka.output.dir}">
+      <fileset dir="${module.eureka.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.eureka.tests" depends="register.custom.compilers,compile.module.eureka.production" description="compile module eureka; test classes" unless="skip.tests">
+    <mkdir dir="${eureka.testoutput.dir}"/>
+    <javac2 destdir="${eureka.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.eureka}/javac">
+      <compilerarg line="${compiler.args.eureka}"/>
+      <bootclasspath refid="eureka.module.bootclasspath"/>
+      <classpath refid="eureka.module.classpath"/>
+      <src refid="eureka.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.eureka"/>
+    </javac2>
+    
+    <copy todir="${eureka.testoutput.dir}">
+      <fileset dir="${module.eureka.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.eureka" description="cleanup module">
+    <delete dir="${eureka.output.dir}"/>
+    <delete dir="${eureka.testoutput.dir}"/>
+  </target>
+</project>
